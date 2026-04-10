@@ -11,6 +11,7 @@ function dotRadius(count, mapWidth) {
 }
 
 let activeSeason = "all";
+let tooltipShownAt = 0;
 const tooltip = document.getElementById("tooltip");
 const mapContainer = document.getElementById("map-container");
 
@@ -66,6 +67,9 @@ function renderDots() {
     dot.addEventListener("mouseleave", hideTooltip);
     dot.addEventListener("click", e => {
       e.stopPropagation();
+      // On mobile, mouseenter fires just before click and already shows the tooltip.
+      // Ignore the click if the tooltip was just shown within 300ms to prevent flicker.
+      if (Date.now() - tooltipShownAt < 300) return;
       if (tooltip.classList.contains("visible") && tooltip._source === dot) {
         hideTooltip();
       } else {
@@ -94,6 +98,7 @@ function showTooltip(e, dot) {
   tooltip.innerHTML = `<strong>${dot._locationLabel}</strong>${entries}`;
   tooltip._source = dot;
   tooltip.classList.add("visible");
+  tooltipShownAt = Date.now();
   positionTooltip(e);
 }
 
