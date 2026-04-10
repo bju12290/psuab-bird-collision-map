@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bird-window collision locations — PSU Abington</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Bird-window collision locations</h1>
+    <p>Penn State Abington &middot; ACURA research</p>
+  </header>
+
+  <div class="season-toggle">
+    <div class="season-row">
+      <button class="season-btn active" data-season="all">All seasons</button>
+    </div>
+    <div class="season-row">
+      <button class="season-btn" data-season="fall2024">Fall 2024</button>
+      <button class="season-btn" data-season="spring2025">Spring 2025</button>
+      <button class="season-btn" data-season="fall2025">Fall 2025</button>
+    </div>
+  </div>
+
+  <div id="map-container">
+    <img src="images/campus_map.png" alt="Penn State Abington campus map" />
+  </div>
+
+  <div class="legend">
+    <span class="legend-label">Birds found</span>
+    <div id="legend-circles"></div>
+  </div>
+
+  <div id="tooltip"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/map.js"></script>
+
+</body>
+</html>
